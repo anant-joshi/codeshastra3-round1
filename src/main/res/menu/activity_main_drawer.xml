@@ -10,6 +10,11 @@
             android:id="@+id/seek_refuge"
             android:icon="@drawable/home"
             android:title="Seek Refuge"/>
+        <item
+            android:id="@+id/show_refuge"
+            android:title="Refuge Location"
+            android:icon="@drawable/angel"
+            android:visible="false"/>
     </group>
 
 </menu>

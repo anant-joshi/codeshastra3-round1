@@ -50,7 +50,7 @@ public class OnReportButtonClicked implements View.OnClickListener{
         if(location != null){
             Uri uri = Constants.HOST_URI;
             JsonObjectRequest request = new JsonObjectRequest(
-                    Request.Method.POST,
+                    Request.Method.PUT,
                     uri.toString(),
                     User.userToJson(User.userFromSharedPreferences(context), location.getLatitude(), location.getLongitude(), "foo"),
                     null,

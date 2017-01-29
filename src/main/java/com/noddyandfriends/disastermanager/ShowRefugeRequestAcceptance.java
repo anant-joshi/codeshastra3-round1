@@ -4,6 +4,7 @@ package com.noddyandfriends.disastermanager;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -18,16 +19,21 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import static com.noddyandfriends.disastermanager.util.Constants.REFUGE_ADDRESS;
+import static com.noddyandfriends.disastermanager.util.Constants.REFUGE_LATITUDE;
+import static com.noddyandfriends.disastermanager.util.Constants.REFUGE_LONGITUDE;
+import static com.noddyandfriends.disastermanager.util.Constants.REFUGE_NAME;
+import static com.noddyandfriends.disastermanager.util.Constants.USER_PREFS;
+
 public class ShowRefugeRequestAcceptance extends Fragment {
 
 
     public ShowRefugeRequestAcceptance() {
 
     }
-    private String refugeName;
-    private String refugeAddress;
     private double latitude;
     private double longitude;
+
 
 
     @Override
@@ -45,8 +51,14 @@ public class ShowRefugeRequestAcceptance extends Fragment {
         }else{
             ActivityCompat.requestPermissions((Activity) getContext(), new String[]{Manifest.permission_group.LOCATION}, getContext().getResources().getInteger(R.integer.PERMISSION_ACCESS_LOCATION));
         }
-        refName.setText(refugeName);
-        refAddr.setText(refugeAddress);
+        SharedPreferences preferences = getActivity().getSharedPreferences(USER_PREFS, 0);
+
+
+        refName.setText(preferences.getString(REFUGE_NAME, null));
+        refAddr.setText(preferences.getString(REFUGE_ADDRESS, null));
+        latitude = preferences.getLong(REFUGE_LATITUDE, 0);
+        longitude = preferences.getLong(REFUGE_LONGITUDE, 0);
+
         Uri webUri = Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude()+","+location.getLongitude()+"&daddr="+latitude+","+longitude);
         mapsView.loadUrl(webUri.toString());
         return rootView;
