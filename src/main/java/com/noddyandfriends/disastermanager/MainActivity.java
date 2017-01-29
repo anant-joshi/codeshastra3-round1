@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission_group.LOCATION) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         boolean isFirstStart = true;
         SharedPreferences preferences = getSharedPreferences(USER_PREFS, 0);
         if(preferences.contains(Constants.DEVICE_TOKEN) && preferences.contains(USER_NAME)){
@@ -63,14 +71,7 @@ public class MainActivity extends AppCompatActivity
         if(isFirstStart){
             onFirstStart();
         }else{
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            drawer.setDrawerListener(toggle);
-            toggle.syncState();
 
-            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-            navigationView.setNavigationItemSelectedListener(this);
         }
     }
 

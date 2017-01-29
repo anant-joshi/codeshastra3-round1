@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.noddyandfriends.disastermanager.util.OnAskForShelterButtonPressed;
 import com.noddyandfriends.disastermanager.util.Utilities;
 
 
@@ -54,7 +55,7 @@ public class AskForShelterFragment extends Fragment {
         LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.request_shelter_layout_space);
         inflateViewsInto(linearLayout, shelterSeekerCount, getContext());
         Button sendRequest = (Button) rootView.findViewById(R.id.request_shelter_send_button);
-
+        sendRequest.setOnClickListener(new OnAskForShelterButtonPressed(getContext(), ));
         return rootView;
     }
 

@@ -9,7 +9,7 @@ import android.net.Uri;
 public class Constants {
     public static final String LATITUDE = "latitude";
     public static final String LONGITUDE = "longitude";
-    public static final Uri HOST_URI = null;
+    public static final Uri HOST_URI = Uri.parse("http://www.google.com");
     public static final String USER_PREFS = "user_prefs";
     public static final String DEVICE_TOKEN = "device_token";
     public static final String USER_NAME = "user_name";

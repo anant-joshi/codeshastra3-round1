@@ -88,14 +88,14 @@
             android:layout_weight="1"
             android:textAppearance="@android:style/TextAppearance.Material"
             android:textSize="20sp"
-            android:text="Food Preference"/>
+            android:text="Gender"/>
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/enter_details_input_food_preference"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:entries="@array/preferences_food_types"/>
+            android:entries="@array/spinner_gender"/>
     </LinearLayout>
 
     <Button
