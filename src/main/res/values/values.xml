@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="PERMISSION_ACCESS_LOCATION">1534</integer>
+</resources>
